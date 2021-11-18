@@ -111,20 +111,20 @@ function _M:onTextMessage(blocks)
 		local res = api:getChatMember(msg.chat.id, user_id)
 
 		if not res then
-			msg:send_reply(i18n("That user has nothing to do with this chat"))
+			msg:send_reply(i18n("Nigdy nie postawił tutaj swojej łapki"))
 			return
 		end
 
 		local status = res.status
 		local name = u:getname_final(res.user)
 		local statuses = {
-			kicked = i18n("%s is banned from this group"),
-			left = i18n("%s left the group or has been kicked and unbanned"),
-			administrator = i18n("%s is an admin"),
-			creator = i18n("%s is the group creator"),
-			unknown = i18n("%s has nothing to do with this chat"),
-			member = i18n("%s is a chat member"),
-			restricted = i18n("%s is a restricted")
+			kicked = i18n("%s jest zablokowany na tej grupie"),
+			left = i18n("%s wyszedł z grupy lub został zablokowany po czym odblokowany"),
+			administrator = i18n("%s jest administratorem"),
+			creator = i18n("%s jest założycielem grupy"),
+			unknown = i18n("%s nigdy nie postawił tutaj swojej łapki"),
+			member = i18n("%s jest zwykłym futrzakiem"),
+			restricted = i18n("%s ma nałożone ograniczenia!")
 		}
 		local denied_permissions = {}
 		for permission, str in pairs(permissions) do
@@ -135,7 +135,7 @@ function _M:onTextMessage(blocks)
 
 		local text = statuses[status]:format(name)
 		if next(denied_permissions) then
-			text = text..i18n('\nRestrictions: <i>%s</i>'):format(table.concat(denied_permissions, ', '))
+			text = text..i18n('\nOgraniczenia: <i>%s</i>'):format(table.concat(denied_permissions, ', '))
 		end
 
 		msg:send_reply(text, 'html')

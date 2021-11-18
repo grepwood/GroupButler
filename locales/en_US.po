@@ -2064,7 +2064,7 @@ msgid "*Custom welcome message saved!*"
 msgstr ""
 
 #: lua/groupbutler/utilities.lua:531
-msgid "-*empty*-"
+msgid "-*brak zasad*-"
 msgstr ""
 
 #: lua/groupbutler/utilities.lua:571

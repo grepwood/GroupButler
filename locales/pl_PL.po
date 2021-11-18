@@ -18,27 +18,28 @@ msgstr ""
 
 #: lua/groupbutler/api_errors.lua:12
 msgid "An unknown error has ocurred"
-msgstr ""
+msgstr "Uwu We made a fucky wucky!
+Wystąpił nieoczekiwany błąd, skontaktuj się z administratorem BOTa."
 
 #: lua/groupbutler/api_errors.lua:13
 msgid "I don't have enough permissions to restrict users"
-msgstr "Nie mam wystarczających uprawnień by ograniczać użytkowników"
+msgstr "Nie mam wystarczających uprawnień by ograniczać użytkowników."
 
 #: lua/groupbutler/api_errors.lua:14
 msgid "I'm not an admin, I can't kick people"
-msgstr "Nie jestem administratorem, nie mogę kogoś usunąć"
+msgstr "Nie jestem administratorem, nie mogę kogoś usunąć."
 
 #: lua/groupbutler/api_errors.lua:15
 msgid "I can't do that to admins!"
-msgstr ""
+msgstr "Nie mogę wykonać tej akcji na administracji."
 
 #: lua/groupbutler/api_errors.lua:16
 msgid "There is no need to unban in a normal group"
-msgstr "Nie ma potrzeby odblokowywać w normalnej grupie"
+msgstr "Nie ma potrzeby odblokowywać w normalnej grupie."
 
 #: lua/groupbutler/api_errors.lua:17
 msgid "This user is not a chat member"
-msgstr "Ten użytkownik nie jest członkiem rozmowy"
+msgstr "Ten użytkownik nie jest członkiem rozmowy."
 
 #: lua/groupbutler/api_errors.lua:18
 msgid "Please input a text"
@@ -46,17 +47,17 @@ msgstr ""
 
 #: lua/groupbutler/api_errors.lua:19
 msgid "This message is too long. Max lenght allowed by Telegram: 4000 characters"
-msgstr ""
+msgstr "Ta wiadomość jest za długa. Maksymalna długość znaków to 4000."
 
 #: lua/groupbutler/api_errors.lua:20
 msgid "One of the inline buttons you are trying to set is missing the URL"
-msgstr ""
+msgstr "Jeden z guzików, którego próbujesz użyć nie ma zapisanego linku."
 
 #: lua/groupbutler/api_errors.lua:21
 #, lua-format
 msgid "Inline link formatted incorrectly. Check the text between brackets -> \\[]()\n"
 "%s"
-msgstr ""
+msgstr "Format linku jest niepoprawny."
 
 #: lua/groupbutler/api_errors.lua:21
 msgid "More info [here](https://telegram.me/GB_tutorials/12)"
@@ -81,7 +82,7 @@ msgid "Hello everyone!\n"
 "My name is %s, and I'm a bot made to help administrators in their hard work.\n"
 "Unfortunately I can't work in normal groups. If you need me, please ask the creator to convert this group to a supergroup and then add me again.\n"
 msgstr "Witam wszystkich!\n"
-"Nazywam się %s i jestem botem stworzonym by pomóc administratorom w ich ciężkiej pracy.\n"
+"Nazywam się %s i jestem botem stworzonym by pomóc naszej kochanej administracji w ich ciężkiej pracy.\n"
 "Niestety nie mogę działaś w normalnych grupach. Jeśli mnie potrzebujesz, poproś założyciela o przekształcenie tej grupy w supergrupę i wtedy dodaj mnie ponownie.\n"
 
 #: lua/groupbutler/main.lua:193
@@ -330,13 +331,13 @@ msgstr ""
 #: lua/groupbutler/plugins/banhammer.lua:97
 #, lua-format
 msgid "%s kicked %s!"
-msgstr ""
+msgstr "%s wyrzucił %s!"
 
 #: lua/groupbutler/plugins/banhammer.lua:106
 #: lua/groupbutler/plugins/banhammer.lua:119
 #, lua-format
 msgid "%s banned %s!"
-msgstr ""
+msgstr "%s zablokował %s!"
 
 #: lua/groupbutler/plugins/banhammer.lua:113
 msgid "_Use this command in reply to a forwarded message_"
@@ -770,7 +771,19 @@ msgid "Hello %s 👋🏼, nice to meet you!\n"
 "• I can also warn, kick or ban users when they post a specific media\n"
 "…and more, below you can find the \"all commands\" button to get the whole list!\n\n"
 "I work better if you add me to the group administrators (otherwise I won't be able to kick or ban)!"
-msgstr ""
+msgstr "Cześć Poszko 👋🏼, miło mi Cię poznać!
+Jestem Futrzaczek (Group Butler - wpisz /about żeby dowiedzieć się więcej) nie taki pierwszy BOT administracyjny oparty o oficjalne API Telegram'a.
+
+Mogę robić dużo fajnych rzeczy, oto ich skrócona lista:
+• Mogę wyrzucać lub blokować użytkowników
+• Dzięki mnie możesz wprowadzić zasady na grupie (/rules)
+• Mam konfigurowalny system anti-flood
+• Mogę witać użytkowników z niestandardową wiadomością, albo jeżeli chcesz sticker'em albo gif'em
+• Potrafię ostrzegać użytkowników i blokować ich gdy przekroczą dozwolną ilość
+• Mogę również ostrzegać, wyrzucać albo blokować użytkowników za wysłanie specyficznego typu wiadomości
+…oraz wiele więcej, poniżej znajdziesz guzik "Wszystkie Komendy" który wyświetli moje wszystkie komendy podzielone na kategorie!
+
+Działam w pełni możliwości tylko jeżeli zostanę administratorem grupy (w przeciwnym wypadku nie będę mógł wykopywać/banować)!"
 
 #: lua/groupbutler/plugins/help.lua:37
 msgid "This bot works only in supergroups.\n\n"
@@ -1826,13 +1839,13 @@ msgstr ""
 
 #. TRANSLATORS: replace 'English' with the name of your language
 #: lua/groupbutler/plugins/setlang.lua:58
-msgid "English language is *set*"
-msgstr ""
+msgid "Language has been *change*"
+msgstr "Język został *zmieniony*"
 
 #: lua/groupbutler/plugins/setlang.lua:59
 msgid ".\n"
 "Please note that translators are volunteers, and this localization _may be incomplete_. You can help improve translations on our [Crowdin Project](https://crowdin.com/project/group-butler).\n"
-msgstr ""
+msgstr ".\nPamiętaj prosze, że tłumaczenia są relizowane przez wolontariuszy i _mogą być niekompletne_. Możesz pomóc ulepszyć tłumaczenie używając [Crowdin Project](https://crowdin.com/project/group-butler)\nlub jeżeli chcesz pomóc tłumaczyć _Futrzaczka_ skontaktuj się z @poszko."
 
 #: lua/groupbutler/plugins/users.lua:18
 msgid "can't change the chat title/description/icon"
@@ -1972,7 +1985,7 @@ msgstr ""
 
 #: lua/groupbutler/plugins/warn.lua:19
 msgid "Remove warn"
-msgstr ""
+msgstr "Usuń ostrzeżenie"
 
 #: lua/groupbutler/plugins/warn.lua:55
 msgid "Max number of warnings changed (media).\n"
@@ -2014,7 +2027,7 @@ msgstr ""
 #: lua/groupbutler/plugins/warn.lua:151
 #, lua-format
 msgid "%s <b>has been warned</b> (<code>%d/%d</code>)"
-msgstr ""
+msgstr "%s <b>dostał ostrzeżenie</b> (<code>%d/%d</code>)"
 
 #: lua/groupbutler/plugins/warn.lua:181
 msgid "The number of warnings received by this user is already <i>zero</i>"
@@ -2023,7 +2036,7 @@ msgstr ""
 #: lua/groupbutler/plugins/warn.lua:185
 #, lua-format
 msgid "<b>Warn removed!</b> (%d/%d)"
-msgstr ""
+msgstr "<b>Ostrzeżenie usunięte!</b> (%d/%d)"
 
 #: lua/groupbutler/plugins/warn.lua:188
 #, lua-format
@@ -2374,5 +2387,5 @@ msgstr ""
 
 #: lua/groupbutler/utilities.lua:1009
 msgid "Go to the message"
-msgstr ""
+msgstr "Przejdź do wiadomości"
 

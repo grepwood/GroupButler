@@ -166,7 +166,7 @@ function _M:onTextMessage(blocks)
 		end
 
 		if err and err.error_code == 403 and msg.chat.id < 0 and not u:is_silentmode_on(msg.chat.id) then -- if the user haven't started the bot and silent mode is off
-			msg:send_reply(i18n("_Please_ [start me](%s) _so I can send you the answer_")
+			msg:send_reply(i18n("[Napisz do mnie](%s) _żebym mógł wysłać Ci odpowiedź!_ ^_^")
 				:format(u:deeplink_constructor(msg.chat.id, extra:sub(2, -1))), "Markdown")
 		end
 	end

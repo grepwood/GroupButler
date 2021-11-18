@@ -27,25 +27,25 @@ local function report(self, msg, description)
 	local u = self.u
 
 	local text = i18n(
-		'• <b>Message reported by</b>: %s (<code>%d</code>)'):format(u:getname_final(msg.from), msg.from.id)
+		'• <b>Wiadomość zgłoszona przez</b>: %s (<code>%d</code>)'):format(u:getname_final(msg.from), msg.from.id)
 	local chat_link = red:hget('chat:'..msg.chat.id..':links', 'link')
 	if msg.reply.forward_from or msg.reply.forward_from_chat or msg.reply.sticker then
 		text = text..i18n(
-			'\n• <b>Reported message sent by</b>: %s (<code>%d</code>)'
+			'\n• <b>Zgłoszona wiadomość została wysłana przez</b>: %s (<code>%d</code>)'
 			):format(u:getname_final(msg.reply.from), msg.reply.from.id)
 	end
 	if chat_link == null then
-		text = text..i18n('\n• <b>Group</b>: %s'):format(msg.chat.title:escape_html())
+		text = text..i18n('\n• <b>Grupa</b>: %s'):format(msg.chat.title:escape_html())
 	else
-		text = text..i18n('\n• <b>Group</b>: <a href="%s">%s</a>'):format(chat_link, msg.chat.title:escape_html())
+		text = text..i18n('\n• <b>Grupa</b>: <a href="%s">%s</a>'):format(chat_link, msg.chat.title:escape_html())
 	end
 	if msg.chat.username then
 		text = text..i18n(
-			'\n• <a href="%s">Go to the message</a>'
+			'\n• <a href="%s">Przejdź do wiadomości</a>'
 			):format('telegram.me/'..msg.chat.username..'/'..msg.message_id)
 	end
 	if description then
-		text = text..i18n('\n• <b>Description</b>: <i>%s</i>'):format(description:escape_html())
+		text = text..i18n('\n• <b>Opis</b>: <i>%s</i>'):format(description:escape_html())
 	end
 
 	local n = 0
@@ -54,7 +54,7 @@ local function report(self, msg, description)
 	if not admins_list then return false end
 
 	local desc_msg
-	local markup = {inline_keyboard={{{text = i18n("Address this report")}}}}
+	local markup = {inline_keyboard={{{text = i18n("Przyjmij to zgłoszenie")}}}}
 	local callback_data = ("report:%d:"):format(msg.chat.id)
 	local hash = 'chat:'..msg.chat.id..':report:'..msg.message_id --stores the user_id and the msg_id of the report messages sent to the admins
 	for i=1, #admins_list do
@@ -113,7 +113,7 @@ function _M:onTextMessage(blocks)
 				red:hset(hash, 'times_allowed', times_allowed)
 				red:hset(hash, 'duration', (duration * 60))
 				text = i18n(
-					'*New parameters saved*.\nUsers will be able to use @admin %d times/%d minutes'
+					'*Nowa wartość zapisana!*.\nUżytkownicy będą mogli używać @admin %d razy/%d na min.'
 					):format(times_allowed, duration)
 			end
 			msg:send_reply(text, "Markdown")
@@ -134,8 +134,8 @@ function _M:onTextMessage(blocks)
 				local times_allowed = tonumber(red:hget(hash, 'times_allowed')) or config.bot_settings.report.times_allowed
 				local ttl = red:ttl(hash..':'..msg.from.id)
 				local minutes, seconds = seconds2minutes(ttl)
-				text = i18n([[_Please, do not abuse this command. It can be used %d times every %d minutes_.
-Wait other %d minutes, %d seconds.]]):format(times_allowed, (duration / 60), minutes, seconds)
+				text = i18n([[_Nie nadużywaj tego! Zgłoszenie może zostać wysłane %d raz(y) na %d min._.
+Musisz poczekać jeszcze %d min., %d sek.]]):format(times_allowed, (duration / 60), minutes, seconds)
 				msg:send_reply(text, "Markdown")
 			else
 				local description
@@ -192,7 +192,7 @@ function _M:onCallbackQuery(blocks)
 					red:setex(hash..':addressed', 3600*24*2, name)
 					api:answerCallbackQuery(msg.cb_id, "✅")
 			else
-				api:answerCallbackQuery(msg.cb_id, i18n("%s has/will address this report"):format(addressed_by), true, 48 * 3600)
+				api:answerCallbackQuery(msg.cb_id, i18n("%s przyjął to zgłoszenie"):format(addressed_by), true, 48 * 3600)
 			end
 		elseif blocks[1] == 'close' then
 			local key = hash .. (':close:%d'):format(msg.from.id)

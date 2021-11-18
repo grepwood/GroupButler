@@ -22,13 +22,9 @@ local function bot_version()
 end
 
 local strings = {
-	about = i18n([[This bot is based on [otouto](https://github.com/topkecleon/otouto) (AKA @mokubot, channel: @otouto), a multipurpose Lua bot.
-Group Butler wouldn't exist without it.
-
-You can contact the owners of this bot using the /groups command.
-
-Bot version: %s
-*Some useful links:*]]):format(bot_version())
+	about = i18n([[Hej! Dziękuję, że zdecydowałeś się na poświęcenie swojego cennego czasu na zajrzenie tutaj. 
+Futrzaczek powstał ponad pół roku temu (wow, jak ten czas szybko leci). Przy jego tworzeniu opierałem się w większości na projekcie [GroupButler](https://github.com/group-butler/GroupButler) z moimi własnymi modyfikacjami, rozwiązaniami dla problemów oraz tłumaczeniem. Jest to mój pierwszy duży projekt, który zyskał tak dużą popularność (na dzień dzisiejszy - 04/01/2019 - jest używany na około 30 aktywnych grupach). Dziękuję wszystkim za wsparcie oraz liczę na dalszą współpracę! :P 
+]])
 }
 
 local function do_keyboard_credits(self)
@@ -36,12 +32,8 @@ local function do_keyboard_credits(self)
 	local keyboard = {}
 	keyboard.inline_keyboard = {
 		{
-			{text = i18n("Channel"), url = 'https://telegram.me/'..config.channel:gsub('@', '')},
-			{text = i18n("GitHub"), url = config.source_code},
-			{text = i18n("Rate me!"), url = 'https://telegram.me/storebot?start='..bot.username},
-		},
-		{
-			{text = i18n("👥 Groups"), callback_data = 'private:groups'}
+			{text = i18n("Kanał dyskusyjny"), url = 't.me/futrzaczekdiscussions'},
+			{text = i18n("Napisz do mnie! x3"), url = 'https://telegram.me/poszko'},
 		}
 	}
 	return keyboard

@@ -49,7 +49,7 @@ local _M =
 	},
 
 	-- Aesthetic
-	lang = os.getenv('DEFAULT_LANG') or 'en_GB',
+	lang = os.getenv('DEFAULT_LANG') or 'pl_PL',
 	commit = os.getenv("GB_COMMIT"),
 	channel = os.getenv("GB_CHANNEL") or '@GroupButler_ch',
 	source_code = os.getenv("GB_SOURCE") or 'https://github.com/group-butler/GroupButler',
@@ -99,11 +99,11 @@ local _M =
 		'report',
 		'rules',
 		'service',
-		'setlang',
 		'users',
 		'warn',
 		'welcome',
 		'admin',
+		'furrystuff',
 		'extra', --must be the last plugin in the list.
 	},
 	available_languages = { -- Sorted alphabetically

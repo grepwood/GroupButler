@@ -72,11 +72,11 @@ function _M:onTextMessage(blocks)
 		local reply_markup =
 		{
 			inline_keyboard =
-			{{{text = i18n('Yes'), callback_data = 'cleanwarns:yes'}, {text = i18n('No'), callback_data = 'cleanwarns:no'}}}
+			{{{text = i18n('Tak'), callback_data = 'cleanwarns:yes'}, {text = i18n('Nie'), callback_data = 'cleanwarns:no'}}}
 		}
 
 		api:sendMessage(msg.chat.id,
-			i18n('Do you want to continue and reset *all* the warnings received by *all* the users of the group?'),
+			i18n('Czy chcesz kontynuować i usunąć *wszystkie* ostrzeżenia otrzymane przez kogokolwiek, kiedykolwiek na tej grupie?'),
 			"Markdown", nil, nil, nil, reply_markup)
 
 		return
@@ -95,7 +95,7 @@ function _M:onTextMessage(blocks)
 		local admin = u:getname_final(msg.from)
 		local user = u:getname_final(msg.reply.from)
 		local text = i18n(
-			'Done! %s has been forgiven.\n<b>Warns found</b>: <i>normal warns %s, for media %s, spamwarns %s</i>'
+			'Zrobione! %s ma teraz czystą karte.\n<b>Znalezione ostrzeżenia</b>: <i>zwykłe %s, za media %s, za spam %s</i>'
 			):format(user, removed.normal or 0, removed.media or 0, removed.spam or 0)
 		msg:send_reply(text, 'html')
 		u:logEvent('nowarn', msg, {admin = admin, user = user, user_id = msg.reply.from.id, rem = removed})
@@ -115,17 +115,17 @@ function _M:onTextMessage(blocks)
 			if type == null then type = 'kick' end
 
 			--try to kick/ban
-			text = i18n("%s <b>%s</b>: reached the max number of warnings (<code>%d/%d</code>)")
+			text = i18n("%s <b>%s</b>: osiągnął maksymalną liczbę ostrzeżeń! (<code>%d/%d</code>)")
 			if type == 'ban' then
-				hammer_log = i18n('banned')
+				hammer_log = i18n('zablokowany')
 				text = text:format(target_name, hammer_log, num, nmax)
 				res, err = u:banUser(msg.chat.id, user_id)
 			elseif type == 'kick' then --kick
-				hammer_log = i18n('kicked')
+				hammer_log = i18n('wyrzucony')
 				text = text:format(target_name, hammer_log, num, nmax)
 				res, err = u:kickUser(msg.chat.id, user_id)
 			elseif type == 'mute' then --kick
-				hammer_log = i18n('muted')
+				hammer_log = i18n('wyciszony')
 				text = text:format(target_name, hammer_log, num, nmax)
 				res, err = u:muteUser(msg.chat.id, user_id)
 			end
@@ -148,7 +148,7 @@ function _M:onTextMessage(blocks)
 				warnmax = nmax
 			})
 		else
-			text = i18n("%s <b>has been warned</b> (<code>%d/%d</code>)"):format(target_name, num, nmax)
+			text = i18n("%s <b>dostał ostrzeżenie</b> (<code>%d/%d</code>)"):format(target_name, num, nmax)
 			local keyboard = doKeyboard_warn(user_id)
 			if blocks[1] ~= 'sw' then api:sendMessage(msg.chat.id, text, 'html', true, nil, nil, keyboard) end
 			u:logEvent('warn', msg, {
@@ -170,7 +170,7 @@ function _M:onCallbackQuery(blocks)
 	local u = self.u
 
 	if not u:is_allowed('hammer', msg.chat.id, msg.from) then
-		api:answerCallbackQuery(msg.cb_id, i18n("You are not allowed to use this button")) return
+		api:answerCallbackQuery(msg.cb_id, i18n("Nie mozesz uzyc tego guzika")) return
 	end
 
 	if blocks[1] == 'removewarn' then
@@ -178,11 +178,11 @@ function _M:onCallbackQuery(blocks)
 		local num = tonumber(red:hincrby('chat:'..msg.chat.id..':warns', user_id, -1)) --add one warn
 		local text, nmax
 		if num < 0 then
-			text = i18n("The number of warnings received by this user is already <i>zero</i>")
+			text = i18n("Liczba ostrzeżeń tego użytkownika już wynosi <i>zero</i>")
 			red:hincrby('chat:'..msg.chat.id..':warns', user_id, 1) --restore the previouvs number
 		else
 			nmax = tonumber(red:hget('chat:'..msg.chat.id..':warnsettings', 'max')) or 3 --get the max num of warnings
-			text = i18n("<b>Warn removed!</b> (%d/%d)"):format(num, nmax)
+			text = i18n("<b>Ostrzeżenie usunięte!</b> (%d/%d)"):format(num, nmax)
 		end
 
 		text = text .. i18n("\n(Admin: %s)"):format(u:getname_final(msg.from))
@@ -194,9 +194,9 @@ function _M:onCallbackQuery(blocks)
 			red:del('chat:'..msg.chat.id..':mediawarn')
 			red:del('chat:'..msg.chat.id..':spamwarns')
 			api:editMessageText(msg.chat.id, msg.message_id, nil,
-				i18n('Done. All the warnings of this group have been erased by %s'):format(u:getname_final(msg.from)), 'html')
+				i18n('Zrobione! Wszystkie ostrzeżenia na tej grupie zostały usunięte przez %s'):format(u:getname_final(msg.from)), 'html')
 		else
-			api:editMessageText(msg.chat.id, msg.message_id, nil, i18n('_Action aborted_'), "Markdown")
+			api:editMessageText(msg.chat.id, msg.message_id, nil, i18n('_Akcja przerwana_'), "Markdown")
 		end
 	end
 end

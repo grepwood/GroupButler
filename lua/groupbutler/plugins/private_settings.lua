@@ -21,9 +21,9 @@ end
 
 local function get_button_description(key)
 	local button_description = {
-		rules_on_join = i18n("When you join a group moderated by this bot, you will receive the group rules in private"),
-		reports = i18n("If enabled, you will receive all the messages reported with the @admin command in the groups you are moderating"), -- luacheck: ignore 631
-	} set_default(button_description, i18n("Description not available"))
+		rules_on_join = i18n("Gdy dołączysz do grupy moderowanej przez tego BOTa otrzymasz regulamin w wiadomości prywatnej"),
+		reports = i18n("Jeśli włączone, będziesz otrzymywał wiadomości z @admin z grup, które moderujesz"), -- luacheck: ignore 631
+	} set_default(button_description, i18n("Opis nie dostępny"))
 	return button_description[key]
 end
 
@@ -32,8 +32,8 @@ local function doKeyboard_privsett(self, user_id)
 
 	local keyboard = api_u.InlineKeyboardMarkup:new()
 	local button_names = {
-		['rules_on_join'] = i18n('Rules on join'),
-		['reports'] = i18n('Users reports')
+		['rules_on_join'] = i18n('Zasady przy dołączeniu'),
+		['reports'] = i18n('Zgłoszenia użytkowników')
 	} set_default(button_names, i18n("Name not available"))
 
 	for key, status in pairs(user_settings) do
@@ -57,7 +57,7 @@ function _M:onTextMessage()
 		local reply_markup = doKeyboard_privsett(self, msg.from.id)
 		api:send_message{
 			chat_id = msg.from.id,
-			text = i18n("Change your private settings"),
+			text = i18n("Zmień swoje prywatne ustawienia"),
 			reply_markup = reply_markup
 	}
 	end

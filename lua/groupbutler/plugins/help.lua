@@ -21,17 +21,19 @@ end
 local function get_helped_string(key)
 	local helped_string = {
 		main_menu = i18n("In this menu you will find all the available commands"),
-		start = i18n([[Hello %s 👋🏼, nice to meet you!
-I'm Group Butler, the first administration bot using the official Bot API.
+		start = i18n([[Cześć %s 👋🏼, miło mi Cię poznać!
+Jestem Futrzaczek (Group Butler - wpisz /about żeby dowiedzieć się więcej) nie taki pierwszy BOT administracyjny oparty o oficjalne API Telegram'a.
 
-*I can do a lot of cool stuffs*, here's a short list:
-• I can *kick or ban* users
-• You can use me to set the group rules
-• I have a flexible *anti-flood* system
-• I can *welcome new users* with a customizable message, or if you want with a gif or a sticker
-• I can *warn* users, and ban them when they reach the maximum number of warnings
-• I can also warn, kick or ban users when they post a specific media
-…and more, below you can find the "all commands" button to get the whole list!
+Mogę robić dużo fajnych rzeczy, oto ich skrócona lista:
+• Mogę wyrzucać lub blokować użytkowników
+• Dzięki mnie możesz wprowadzić zasady na grupie (/rules)
+• Mam konfigurowalny system anti-flood
+• Mogę witać użytkowników z niestandardową wiadomością, albo jeżeli chcesz sticker'em albo gif'em
+• Potrafię ostrzegać użytkowników i blokować ich gdy przekroczą dozwolną ilość
+• Mogę również ostrzegać, wyrzucać albo blokować użytkowników za wysłanie specyficznego typu wiadomości
+…oraz wiele więcej, poniżej znajdziesz guzik "Wszystkie Komendy" który wyświetli moje wszystkie komendy podzielone na kategorie!
+
+Działam w pełni możliwości tylko jeżeli zostanę administratorem grupy(w przeciwnym wypadku nie będę mógł wykopywać/banować)!
 
 I work better if you add me to the group administrators (otherwise I won't be able to kick or ban)!]]),
 		basics = i18n([[This bot works only in supergroups.
@@ -274,11 +276,10 @@ local function do_keyboard_private()
 	local keyboard = {}
 	keyboard.inline_keyboard = {
 		{
-			{text = i18n("📢 Bot channel"), url = 'https://telegram.me/'..config.channel:gsub('@', '')},
-			{text = i18n("🌍 Select your language"), callback_data = 'selectlang'},
+			{text = i18n("📢 Kanał dyskusyjny BOTa"), url = 'https://t.me/futrzaczekdiscussions'},
 		},
 		{
-			{text = i18n("📕 All the commands"), callback_data = 'help:back'}
+			{text = i18n("📕 Wszystkie komendy"), callback_data = 'help:back'}
 		}
 	}
 	return keyboard

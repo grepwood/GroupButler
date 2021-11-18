@@ -55,7 +55,7 @@ function _M:onCallbackQuery(blocks)
 				red:hset('chat:'..msg.chat.id..':char', 'Rtl', 'allowed')
 			end
 			-- TRANSLATORS: replace 'English' with the name of your language
-			api:editMessageText(msg.chat.id, msg.message_id, nil, i18n("English language is *set*") ..
+			api:editMessageText(msg.chat.id, msg.message_id, nil, i18n("Language has been *change*") ..
 i18n([[.
 Please note that translators are volunteers, and this localization _may be incomplete_. You can help improve translations on our [Crowdin Project](https://crowdin.com/project/group-butler).
 ]]), "Markdown")

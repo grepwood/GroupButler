@@ -528,7 +528,7 @@ function _M:getRules(chat_id)
 	local hash = 'chat:'..chat_id..':info'
 	local rules = red:hget(hash, 'rules')
 	if rules == null then
-		return i18n("-*empty*-")
+		return i18n("-*brak zasad*-")
 	end
 	return rules
 end

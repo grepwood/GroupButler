@@ -167,7 +167,7 @@ function _M:onTextMessage(blocks)
 
 		local input = blocks[2]
 		if not input and not msg.reply then
-			msg:send_reply(i18n("Welcome and...?"))
+			msg:send_reply(i18n("Poprawne użycie: `/welcome [tekst powitania]` \nMożesz również zamiast tekstu ustawić sticker lub gif! Wystarczy, że odpowiesz na niego tą komendą."), "Markdown")
 			return
 		end
 
@@ -191,9 +191,9 @@ function _M:onTextMessage(blocks)
 				end
 				-- turn on the welcome message in the group settings
 				red:hset(('chat:%d:settings'):format(msg.chat.id), 'Welcome', 'on')
-				msg:send_reply(i18n("A form of media has been set as the welcome message: `%s`"):format(replied_to), "Markdown")
+				msg:send_reply(i18n("`%s` został ustawiony jako wiadomość powitalna"):format(replied_to), "Markdown")
 			else
-				msg:send_reply(i18n("Reply to a `sticker` or a `gif` to set them as the *welcome message*"), "Markdown")
+				msg:send_reply(i18n("Odpowiedz tą komendą na `sticker` albo `gif` żeby ustawić go jako *wiadomość powitalną*"), "Markdown")
 			end
 		else
 			red:hset(hash, 'type', 'custom')
@@ -211,7 +211,7 @@ function _M:onTextMessage(blocks)
 				-- turn on the welcome message in the group settings
 				red:hset(('chat:%d:settings'):format(msg.chat.id), 'Welcome', 'on')
 				local id = ok.message_id
-				api:editMessageText(msg.chat.id, id, nil, i18n("*Custom welcome message saved!*"), "Markdown")
+				api:editMessageText(msg.chat.id, id, nil, i18n("*Wiadomość powitalna została zapisana!*"), "Markdown")
 			end
 		end
 	end

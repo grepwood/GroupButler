@@ -73,13 +73,13 @@ function _M:onTextMessage(blocks)
 		local rules = blocks[2]
 		--ignore if not input text
 		if not rules then
-			msg:send_reply(i18n("Please write something next `/setrules`"), "Markdown")
+			msg:send_reply(i18n("Poprawne użycie: `/setrules [tekst regulaminu]`"), "Markdown")
 			return
 		end
 		--check if an admin want to clean the rules
 		if rules == '-' then
 			red:hdel(hash, 'rules')
-			msg:send_reply(i18n("Rules has been deleted."))
+			msg:send_reply(i18n("Zasady został usunięte!"))
 			return
 		end
 
@@ -92,7 +92,7 @@ function _M:onTextMessage(blocks)
 		else
 			red:hset(hash, 'rules', rules)
 			local id = ok.message_id
-			api:editMessageText(msg.chat.id, id, nil, i18n("New rules *saved successfully*!"), "Markdown")
+			api:editMessageText(msg.chat.id, id, nil, i18n("Nowe zasady zostały *zapisane pomyślnie*!"), "Markdown")
 		end
 	end
 end
